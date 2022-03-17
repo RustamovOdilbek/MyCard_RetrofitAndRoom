@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.ConnectivityManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -41,12 +42,15 @@ class MainActivity : AppCompatActivity() {
 
 
         if (isInternetAvailable()) {
-            initViews()
+
+            onlane()
             Logger.d("$#$#$#", "online")
+            Log.d("$#$#$#", "online")
             inspection()
         }else{
-            onlane()
+            initViews()
             Logger.d("$#$#$#", "ofline")
+            Log.d("$#$#$#", "online")
         }
 
         iv_open_app.setOnClickListener {
@@ -62,7 +66,10 @@ class MainActivity : AppCompatActivity() {
             ) {
                 Logger.d("server", response.body().toString())
                 list.clear()
-                list.addAll(response.body() as Array<out Card>)
+                listServer.addAll(response.body()!!)
+                for (seaver in listServer){
+                    list.add(Card(seaver.id, seaver.card_id, seaver.cvv, seaver.is_boolean, seaver.data, seaver.name))
+                }
                 refreshAdapter(list)
             }
 
