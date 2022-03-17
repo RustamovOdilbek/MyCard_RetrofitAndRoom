@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.AddNewCard"
+    android:background="#000000">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#000000">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+
+            <LinearLayout
+                android:layout_marginEnd="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/iv_close"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_baseline_close_24"/>
+
+                <TextView
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Add New Card"
+                    android:textSize="22dp"
+                    android:textColor="@color/purple_200"
+                    android:gravity="center|left"/>
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_baseline_center_focus_weak_24"/>
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:padding="15dp"
+            android:background="#000000">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:cardCornerRadius="20dp">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@color/purple_200"/>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:padding="10dp"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:layout_marginStart="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="VISA"
+                            android:textSize="30dp"
+                            android:textColor="#FFFFFF"/>
+
+                        <LinearLayout
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+
+                        <TextView
+                            android:id="@+id/tv_balance"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="$ 0.0"
+                            android:textColor="#FFFFFF"
+                            android:textSize="20sp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center|left">
+
+                        <TextView
+                            android:id="@+id/tv_card_number"
+                            android:layout_marginStart="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1234 5678 9000 000"
+                            android:textSize="28dp"
+                            android:textColor="@color/white"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginStart="10dp"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="10dp">
+
+                        <LinearLayout
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:gravity="center|left">
+
+                            <TextView
+                                android:id="@+id/tv_card_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="NAME SURNAME"
+                                android:textSize="20sp"
+                                android:textColor="@color/white"/>
+
+                            <TextView
+                                android:layout_weight="1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:id="@+id/tv_card_data"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="12/15"
+                                android:textSize="20sp"
+                                android:textColor="@color/white"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_marginStart="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your card number"
+                android:textColor="@color/white"/>
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content">
+
+               <FrameLayout
+                   android:layout_width="60dp"
+                   android:layout_height="40dp">
+
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="match_parent">
+
+                       <ImageView
+                           android:layout_width="40dp"
+                           android:layout_height="40dp"
+                           android:src="@drawable/ic_circle_2"/>
+                   </LinearLayout>
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="match_parent"
+                       android:gravity="right">
+
+                       <ImageView
+                           android:layout_width="40dp"
+                           android:layout_height="40dp"
+                           android:src="@drawable/ic_baseline_circle_24"/>
+                   </LinearLayout>
+               </FrameLayout>
+
+               <EditText
+                   android:id="@+id/et_card_number"
+                   android:layout_marginStart="10dp"
+                   android:layout_marginEnd="10dp"
+                   android:layout_width="match_parent"
+                   android:layout_height="40dp"
+                   android:hint="Card number"
+                   android:textColor="@color/purple_200"
+                   android:textSize="16sp"
+                   android:paddingStart="10dp"
+                   android:textColorHint="@color/white"
+                   android:background="@drawable/shape_border_rounded"/>
+           </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginStart="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:layout_weight="0.4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Expiration data"
+                    android:textColor="@color/white"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/et_card_day"
+                        android:layout_weight="1"
+                        android:layout_width="200dp"
+                        android:layout_height="30dp"
+                        android:hint="15"
+                        android:textColor="@color/purple_200"
+                        android:gravity="center"
+                        android:textColorHint="@color/white"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/shape_border_rounded"/>
+
+                    <EditText
+                        android:layout_marginStart="10dp"
+                        android:id="@+id/et_card_month"
+                        android:layout_weight="1"
+                        android:layout_width="200dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/shape_border_rounded"
+                        android:gravity="center"
+                        android:hint="12"
+                        android:textColor="@color/purple_200"
+                        android:textColorHint="@color/white"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_weight="0.6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center|top">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CVV"
+                    android:textColor="@color/white" />
+
+
+                    <EditText
+                        android:id="@+id/et_card_cvv"
+                        android:layout_width="100dp"
+                        android:layout_height="30dp"
+                        android:hint="779"
+                        android:textColorHint="@color/white"
+                        android:gravity="center"
+                        android:textColor="@color/purple_200"
+                        android:background="@drawable/shape_border_rounded"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_marginStart="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Card Holder Name"
+                android:textColor="@color/white"/>
+
+            <EditText
+                android:id="@+id/et_card_name"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:hint="NAME SURNAME"
+                android:textColorHint="@color/white"
+                android:paddingStart="10dp"
+                android:background="@drawable/shape_border_rounded"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </LinearLayout>
+
+      <Button
+          android:id="@+id/btn_add"
+          android:layout_marginStart="10dp"
+          android:layout_marginEnd="10dp"
+          android:layout_marginBottom="20dp"
+          android:layout_width="match_parent"
+          android:layout_height="50dp"
+          android:text="Add New Card"
+          android:background="@drawable/shape_border_button"
+          app:backgroundTint="@null"/>
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
