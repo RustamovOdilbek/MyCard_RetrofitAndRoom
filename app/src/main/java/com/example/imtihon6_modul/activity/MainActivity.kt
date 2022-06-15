@@ -1,11 +1,13 @@
 package com.example.imtihon6_modul.activity
 
+import android.app.Activity
 import android.content.Intent
 import android.net.ConnectivityManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.imtihon6_modul.R
@@ -42,15 +44,12 @@ class MainActivity : AppCompatActivity() {
 
 
         if (isInternetAvailable()) {
-
-            onlane()
+            initViews()
             Logger.d("$#$#$#", "online")
-            Log.d("$#$#$#", "online")
             inspection()
         }else{
             initViews()
             Logger.d("$#$#$#", "ofline")
-            Log.d("$#$#$#", "online")
         }
 
         iv_open_app.setOnClickListener {
@@ -58,34 +57,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun onlane() {
-        RetrofitHttp.cardServer.getAllCards().enqueue(object : Callback<ArrayList<CardSer>>{
-            override fun onResponse(
-                call: Call<ArrayList<CardSer>>,
-                response: Response<ArrayList<CardSer>>
-            ) {
-                Logger.d("server", response.body().toString())
-                list.clear()
-                listServer.addAll(response.body()!!)
-                for (seaver in listServer){
-                    list.add(Card(seaver.id, seaver.card_id, seaver.cvv, seaver.is_boolean, seaver.data, seaver.name))
-                }
-                refreshAdapter(list)
-            }
-
-            override fun onFailure(call: Call<ArrayList<CardSer>>, t: Throwable) {
-
-            }
-
-        })
-    }
-
     private fun inspection() {
         val repository = CardRepository(application)
         val cards = repository.getCards() as ArrayList<Card>
         for (card in cards){
             if (card.is_boolean){
-                var cardSer = CardSer(card.card_id, card.cvv, card.data, card.id!!, card.is_boolean, card.name)
+                val cardSer = CardSer(card.card_id, card.cvv, card.data, card.id!!, card.is_boolean, card.name)
 
                 RetrofitHttp.cardServer.createCard(cardSer).enqueue(object : Callback<CardSer>{
                     override fun onResponse(call: Call<CardSer>, response: Response<CardSer>) {
@@ -102,6 +79,8 @@ class MainActivity : AppCompatActivity() {
 
             Logger.d("data", repository.getCards().toString())
         }
+
+
     }
 
     private fun initViews() {
@@ -116,9 +95,16 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
     }
 
+    var resultActivity = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()){ result ->
+        if (result.resultCode == Activity.RESULT_OK){
+            initViews()
+        }
+    }
+
     private fun openActivity() {
         val intent = Intent(this, AddNewCard::class.java)
-        startActivity(intent)
+        resultActivity.launch(intent)
     }
 
     private fun isInternetAvailable(): Boolean {
@@ -126,5 +112,22 @@ class MainActivity : AppCompatActivity() {
         val infoMobile = manager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE)
         val infoWifi = manager.getNetworkInfo(ConnectivityManager.TYPE_WIFI)
         return infoMobile!!.isConnected || infoWifi!!.isConnected
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+        if (isInternetAvailable()) {
+            initViews()
+            Logger.d("$#$#$#", "online")
+            inspection()
+        }else{
+            Logger.d("$#$#$#", "ofline")
+            initViews()
+        }
+
+        iv_open_app.setOnClickListener {
+            openActivity()
+        }
     }
 }

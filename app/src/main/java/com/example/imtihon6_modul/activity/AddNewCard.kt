@@ -1,5 +1,7 @@
 package com.example.imtihon6_modul.activity
 
+import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -49,7 +51,7 @@ class AddNewCard : AppCompatActivity() {
             )
             repository.saveCard(card)
 
-            finish()
+            backToFinish()
         }
 
         val repository = CardRepository(application)
@@ -58,5 +60,10 @@ class AddNewCard : AppCompatActivity() {
         iv_close.setOnClickListener {
             finish()
         }
+    }
+
+    private fun backToFinish() {
+        val intent = Intent()
+        setResult(Activity.RESULT_OK, intent)
     }
 }

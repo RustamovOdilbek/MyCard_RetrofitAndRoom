@@ -16,4 +16,7 @@ interface CardDao {
 
     @Query("UPDATE card_table SET is_boolean = :is_boolean WHERE id = :id")
     fun updateCard(id: Int, is_boolean: Boolean): Int
+
+    @Query("select * from card_table where is_boolean=0")
+    fun getOflinePost(): List<Card>
 }
